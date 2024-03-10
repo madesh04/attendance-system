@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+.user_login_card {
+  display: flex;
+  justify-content: center;
+}
+.btn_group {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 10px auto;
+}
+.card-title {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+  font-style: normal;
+  text-transform: uppercase;
+}

@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Permanent+Marker&display=swap");
+.custom_navbar {
+  background-color: #090e45;
+  color: #fff;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  box-shadow: 8px 10px 10px rgba(0, 0, 0, 0.505);
+}
+.custom_vr {
+  width: 2px !important;
+  background-color: red !important;
+  opacity: 1 !important;
+}
+.logo_name {
+  font-family: "Permanent Marker";
+  text-transform: uppercase;
+  font-weight: 400;
+  font-style: normal;
+}

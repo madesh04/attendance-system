@@ -1,12 +1,17 @@
-import './App.css'
-import { Login } from './pages/login/Login'
+import "./App.css";
+import Landing from "./page/Landing/Landing";
+import { Home } from "./page/Login-screen/Home/Home";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-  <div>
-    <Login/>
-  </div>
-  )
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/student/landing" element={<Landing />} />
+      </Routes>
+    </>
+  );
 }
 
-export default App
+export default App;
