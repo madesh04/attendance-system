@@ -1,4 +1,3 @@
-import Carousel from "../../component/Caurosel/Caurosel";
 import Navbar from "../../component/Navbar/Navbar";
 import "./Landing.css";
 const Landing = () => {
@@ -11,9 +10,7 @@ const Landing = () => {
         <div className="col-lg-6">
           <h1>Sapmle text</h1>
         </div>
-        <div className="carousel_section col-lg-6 ">
-          <Carousel />
-        </div>
+        <div className="carousel_section col-lg-6 "></div>
       </div>
     </section>
   );

@@ -10,7 +10,7 @@ const Navbar = () => {
       <div className="container ">
         <a className="navbar-brand text-white logo_name" href="#">
           <img src={Logo} alt="Bootstrap" width="55" height="55" />
-          Food Bay
+          KMS Monitoring System
         </a>
         <Button
           className="navbar-toggler"

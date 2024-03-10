@@ -1,12 +1,63 @@
 import { useState } from "react";
-import { FaUser, FaLock, FaEnvelope, FaMobile } from "react-icons/fa6";
-import {} from "react-icons/fa6";
+import { FaUser, FaLock, FaEnvelope, FaMobile } from "react-icons/fa";
+import { Student } from "../../../Data/Data_Student";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export const UserLoginForm = () => {
   const [showRegisterForm, setShowRegisterForm] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [mobile, setMobile] = useState("");
+  const navigate = useNavigate();
 
   const handleToggleForm = () => {
     setShowRegisterForm(!showRegisterForm);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (showRegisterForm) {
+      // Register logic
+      console.log("Registering...");
+      console.log("Username:", username);
+      console.log("Password:", password);
+      console.log("Email:", email);
+      console.log("Mobile Number:", mobile);
+
+      const existingUser = Student.find((user) => user.username === username);
+      if (existingUser) {
+        toast.error(
+          "Username already exists. Please choose a different username."
+        );
+        return;
+      }
+
+      const newUser = { username, password, email, mobile };
+      Student.push(newUser);
+      toast.success("Student Register Successful");
+
+      setUsername("");
+      setPassword("");
+      setEmail("");
+      setMobile("");
+    } else {
+      // Login logic
+      console.log("Logging in...");
+      console.log("Username:", username);
+      console.log("Password:", password);
+      const user = Student.find(
+        (user) => user.username === username && user.password === password
+      );
+      if (user) {
+        toast.success("Login successful!");
+        navigate("/student/landing");
+      } else {
+        // Handle incorrect credentials
+        toast.error("Invalid username or password. Please try again.");
+      }
+    }
   };
 
   return (
@@ -15,13 +66,15 @@ export const UserLoginForm = () => {
         {showRegisterForm ? "Student Registration" : "Student Login"}
       </h5>
       <div className="card-body">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="form-floating mb-3">
             <input
               type="text"
               className="form-control"
               id="floatingInput"
               placeholder="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
             <label htmlFor="floatingInput">
               <FaUser />
@@ -35,6 +88,8 @@ export const UserLoginForm = () => {
                 className="form-control"
                 id="floatingPassword"
                 placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <label htmlFor="floatingPassword">
                 <FaLock />
@@ -50,6 +105,8 @@ export const UserLoginForm = () => {
                   className="form-control"
                   id="floatingEmail"
                   placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <label htmlFor="floatingEmail">
                   <FaEnvelope />
@@ -62,6 +119,8 @@ export const UserLoginForm = () => {
                   className="form-control"
                   id="floatingMobile"
                   placeholder="Mobile Number"
+                  value={mobile}
+                  onChange={(e) => setMobile(e.target.value)}
                 />
                 <label htmlFor="floatingMobile">
                   <FaMobile />
@@ -74,6 +133,8 @@ export const UserLoginForm = () => {
                   className="form-control"
                   id="floatingPassword"
                   placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <label htmlFor="floatingPassword">
                   <FaLock />
